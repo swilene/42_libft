@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:17:09 by saguesse          #+#    #+#             */
-/*   Updated: 2022/05/25 13:02:07 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/05/25 17:39:13 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		return (lst);
 	new_list = ft_lstnew(f(lst->content));
 	if (!new_list)
-	{
-		ft_lstclear(&lst, del);
 		return (NULL);
-	}
 	new_element = new_list;
 	lst = lst->next;
 	while (lst)
@@ -33,7 +30,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		if (!new_list->next)
 		{
 			ft_lstclear(&new_element, del);
-			ft_lstclear(&lst, del);
 			return (NULL);
 		}
 		lst = lst->next;
