@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 14:40:46 by saguesse          #+#    #+#             */
-/*   Updated: 2022/05/30 10:46:04 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/05/31 16:29:01 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,17 @@ static int	words(const char *s, char c)
 
 static char	*check_malloc(char **str, int j)
 {
-	while (j >= 0)
+	if (!str[j])
 	{
-		free(str[j]);
-		j--;
+		while (j >= 0)
+		{
+			free(str[j]);
+			j--;
+		}
+		free(str);
+		return (NULL);
 	}
-	free(str);
-	return (NULL);
+	return (str[j]);
 }
 
 char	**ft_split(char const *s, char c)
@@ -77,8 +81,8 @@ char	**ft_split(char const *s, char c)
 			i++;
 		len = len_word(s, c, i);
 		str[j] = ft_substr(s, i, len);
-		if (!str[j])
-			check_malloc(str, j);
+		if ((check_malloc(str, j)) == NULL)
+			return (NULL);
 		j++;
 		i += len;
 	}

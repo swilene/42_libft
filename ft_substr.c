@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:31:57 by saguesse          #+#    #+#             */
-/*   Updated: 2022/05/25 14:37:27 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/05/31 16:59:21 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start > ft_strlen(s))
 	{
 		str = (char *)malloc(sizeof(*str) * 1);
-		str[i] = '\0';
-		return (str);
+		if (!str)
+			return (NULL);
+		return (str[i] = '\0', str);
 	}
 	else if (len > (ft_strlen(s) - start))
 		str = (char *)malloc(sizeof(*str) * (ft_strlen(s) - start) + 1);
@@ -36,6 +37,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 		start++;
 	}
-	str[i] = '\0';
-	return (str);
+	return (str[i] = '\0', str);
 }

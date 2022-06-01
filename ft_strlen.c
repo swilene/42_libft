@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:39:06 by saguesse          #+#    #+#             */
-/*   Updated: 2022/05/25 14:15:12 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:23:55 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *s)
 	int	i;
 
 	i = 0;
+	if (s[i] == '\0')
+		return (0);
 	while (s[i])
 		i++;
 	return (i);
