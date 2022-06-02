@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 09:58:29 by saguesse          #+#    #+#              #
-#    Updated: 2022/05/25 15:43:26 by saguesse         ###   ########.fr        #
+#    Updated: 2022/06/02 14:40:08 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,3 +83,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all bonus clean fclean re
