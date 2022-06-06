@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 09:58:29 by saguesse          #+#    #+#              #
-#    Updated: 2022/06/02 14:40:08 by saguesse         ###   ########.fr        #
+#    Updated: 2022/06/06 12:39:43 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,14 +61,16 @@ BONUS_SRC = ft_lstnew_bonus.c \
 	ft_lstiter_bonus.c \
 	ft_lstmap_bonus.c \
 
+HEADER = libft.h
+
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME) 
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+%.o : %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
